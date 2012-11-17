@@ -161,11 +161,12 @@
       </div>
       <% } else { %>
       <div>
-        <h1>Changed again! Welcome</h1>
+        <h1>Welcome</h1>
         <div class="fb-login-button" data-scope="user_likes,user_photos"></div>
       </div>
       <% } %>
     </header>
+
 
     <section id="get-started">
       <p>Welcome to your Facebook app, running on <span>heroku</span>!</p>
@@ -173,7 +174,21 @@
     </section>
 
     <% if (user) { %>
-
+    <section>
+        <div class = "list">
+        <h3>Your news feed</h3>
+        <ul id="friends" class="friends">
+          <% req.friends.forEach(function(friend) { %>
+            <li>
+              <a href="https://www.facebook.com/<%= friend.id %>" target="_top">
+                <img src="https://graph.facebook.com/<%= friend.id %>/picture?type=square" alt="<%= friend.name %>">
+                <%= friend.name %>
+              </a>
+            </li>
+          <% }); %>
+        </ul>
+        </div>
+    </section>
     <section id="samples" class="clearfix">
       <h1>Examples of the Facebook Graph API</h1>
 
