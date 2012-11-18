@@ -93,7 +93,8 @@ function handle_facebook_request(req, res) {
       function(cb) {
           req.facebook.get('/me/home', function (newsFeeds) {
               req.newsFeeds = newsFeeds;
-          })
+              cb();
+          });
       }
     ], function() {
       render_page(req, res);
