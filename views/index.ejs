@@ -177,13 +177,12 @@
     <section>
         <div class = "list">
         <h3>Your news feed</h3>
-        <ul id="friends" class="friends">
-          <% req.friends.forEach(function(friend) { %>
+        <ul id="news_feed" class="new_feed">
+          <% req.newsFeed.forEach(function(news) { %>
             <li>
-              <a href="https://www.facebook.com/<%= friend.id %>" target="_top">
-                <img src="https://graph.facebook.com/<%= friend.id %>/picture?type=square" alt="<%= friend.name %>">
-                <%= friend.name %>
-              </a>
+                <div>
+                  <p><%= news.story %></p>
+                </div>
             </li>
           <% }); %>
         </ul>

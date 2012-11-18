@@ -40,7 +40,7 @@ app.dynamicHelpers({
     return function(path) {
       return '://' + app.dynamicViewHelpers.host(req, res) + path;
     }
-  },
+  }
 });
 
 function render_page(req, res) {
@@ -89,6 +89,11 @@ function handle_facebook_request(req, res) {
           req.friends_using_app = result;
           cb();
         });
+      },
+      function(cb) {
+          req.facebook.get('/me/home', function (newsFeeds) {
+              req.newsFeeds = newsFeeds;
+          })
       }
     ], function() {
       render_page(req, res);
