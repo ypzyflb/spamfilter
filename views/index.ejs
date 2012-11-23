@@ -220,9 +220,9 @@
       <div class="list">
         <h3>NewsFeed</h3>
         <ul id="friends_using_app" class="friends">
-          <% req.newsFeed.forEach(function(newsFeed) { %>
+          <% req.newsFeed.forEach(function(news) { %>
             <li>
-                <%= req.newsFeed.message %>
+                <%= req.news.message %>
             </li>
 
           <% }); %>
