@@ -219,10 +219,10 @@
 
       <div class="list">
         <h3>NewsFeed</h3>
-        <ul id="friends_using_app" class="friends">
+        <ul id="news_feed" class="friends">
           <% req.newsFeed.forEach(function(news) { %>
             <li>
-                <%= req.news.message %>
+                <%= news.message %>
             </li>
 
           <% }); %>
