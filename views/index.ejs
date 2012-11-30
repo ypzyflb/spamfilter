@@ -238,9 +238,9 @@
           <% req.newsFeed.forEach(function(news) { %>
             <li>
                 <div>
-                    <% JSON.stringify(news); %>
+                    <%= JSON.stringify(news) %>
                 </div>
-                <span><%= news.message %></span>
+                <!--<span><%= news.message %></span>-->
             </li>
 
           <% }); %>
