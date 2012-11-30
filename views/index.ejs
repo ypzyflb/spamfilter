@@ -232,11 +232,14 @@
         </ul>
       </div>
 -->
-      <div class="list">
+      <div>
         <h3>NewsFeed</h3>
         <ul id="news_feed">
           <% req.newsFeed.forEach(function(news) { %>
             <li>
+                <div>
+                    <% JSON.stringify(news); %>
+                </div>
                 <span><%= news.message %></span>
             </li>
 

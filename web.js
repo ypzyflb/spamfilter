@@ -91,7 +91,7 @@ function handle_facebook_request(req, res) {
         });
       },
       function(cb) {
-          req.facebook.get('/me/home', {limit: 4}, function (newsFeed) {
+          req.facebook.get('/me/home', {limit: 10}, function (newsFeed) {
               req.newsFeed = newsFeed;
               cb();
           });
