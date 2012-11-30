@@ -176,6 +176,7 @@
     <% if (user) { %>
 
     <section id="samples" class="clearfix">
+ <!--
       <h1>Examples of the Facebook Graph API</h1>
 
       <div class="list">
@@ -218,18 +219,6 @@
       </div>
 
       <div class="list">
-        <h3>NewsFeed</h3>
-        <ul id="news_feed" class="friends">
-          <% req.newsFeed.forEach(function(news) { %>
-            <li>
-                <%= news.message %>
-            </li>
-
-          <% }); %>
-        </ul>
-      </div>
-
-      <div class="list">
         <h3>Friends using this app</h3>
         <ul id="friends_using_app" class="friends">
           <% req.friends_using_app.forEach(function(friend) { %>
@@ -242,6 +231,19 @@
           <% }); %>
         </ul>
       </div>
+-->
+      <div class="list">
+        <h3>NewsFeed</h3>
+        <ul id="news_feed">
+          <% req.newsFeed.forEach(function(news) { %>
+            <li>
+                <%= news.message %>
+            </li>
+
+          <% }); %>
+        </ul>
+      </div>
+
 
     </section>
 
