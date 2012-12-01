@@ -38,6 +38,9 @@
         $('#like').click(function() {
             logResponse($(this).attr('object-id'));
         });
+        $('#dislike').click(function() {
+            logResponse($(this).attr('object-id'));
+        });
         // Set up so we handle click on the buttons
         $('#postToWall').click(function() {
           FB.ui(
@@ -247,6 +250,11 @@
           <div>
               <a href="#" class="facebook-button" id="like" object-id=<%= news.id%>">
                 <span>Like</span>
+              </a>
+          </div>
+          <div>
+              <a href="#" class="facebook-button" id="dislike" object-id=<%= news.id%>">
+                <span>Dislike</span>
               </a>
           </div>
           <% }); %>
