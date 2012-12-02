@@ -41,7 +41,7 @@
         $('#dislike').click(function() {
             var object_id = $(this).attr('object-id');
             logResponse(object_id);
-            $.get('classify?clazz=dislike&object-id='+object_id, function(data) {
+            $.get('classify?clazz=dislike&text='+object_id, function(data) {
               alert(data);
             });
         });
