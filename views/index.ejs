@@ -39,7 +39,11 @@
             logResponse($(this).attr('object-id'));
         });
         $('#dislike').click(function() {
-            logResponse($(this).attr('object-id'));
+            var object_id = $(this).attr('object-id');
+            logResponse(object_id);
+            $.get('classify?clazz=dislike&object-id='+object_id, function(data) {
+              alert(data);
+            });
         });
         // Set up so we handle click on the buttons
         $('#postToWall').click(function() {

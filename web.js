@@ -105,5 +105,9 @@ function handle_facebook_request(req, res) {
   }
 }
 
+function handle_classifier_request(req, res) {
+    console.log("inside classifier handler" + req);
+}
 app.get('/', handle_facebook_request);
 app.post('/', handle_facebook_request);
+app.get('/classify', handle_classifier_request);
