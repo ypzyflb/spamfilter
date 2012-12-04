@@ -40,8 +40,9 @@
         });
         $('#dislike').click(function() {
             var object_id = $(this).attr('object-id');
+            var text = $(this).attr('text');
             logResponse(object_id);
-            $.get('classify?clazz=dislike&text='+object_id, function(data) {
+            $.get('classify?clazz=dislike&text='+text, function(data) {
               alert(data);
             });
         });
@@ -252,10 +253,10 @@
           </div>
           <!--<span><%= news.message %></span>-->
           <div>
-              <a href="#" class="facebook-button" id="like" object-id=<%= news.id%>">
+              <a href="#" class="facebook-button" id="like" object-id="<%= news.id%>">
                 <span>Like</span>
               </a>
-              <a href="#" class="facebook-button" id="dislike" object-id=<%= news.id%>">
+              <a href="#" class="facebook-button" id="dislike" object-id=<%= news.id%> text='<%= news.toSource()%>'>
                 <span>Dislike</span>
               </a>
           </div>
