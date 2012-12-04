@@ -256,7 +256,7 @@
               <a href="#" class="facebook-button" id="like" object-id="<%= news.id%>">
                 <span>Like</span>
               </a>
-              <a href="#" class="facebook-button" id="dislike" object-id=<%= news.id%> text='<%= news.toSource()%>'>
+              <a href="#" class="facebook-button" id="dislike" object-id=<%= news.id%> text='<%= JSON.stringify(news)%>'>
                 <span>Dislike</span>
               </a>
           </div>
