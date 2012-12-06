@@ -153,7 +153,7 @@ function handle_classifier_request(req, res) {
     classifier.addDocument(text, clazz);
     classifier.train();
     console.log(classifier.classify("text"));
-    get_classifier_for_user(uid);
+    //get_classifier_for_user(uid);
     res.end("text = " + text);
 }
 app.get('/', handle_facebook_request);
