@@ -2,6 +2,7 @@ var async   = require('async');
 var express = require('express');
 var util    = require('util');
 var natural = require ("natural");
+var pg = require('pg');
 
 // create an express webserver
 var app = express.createServer(
