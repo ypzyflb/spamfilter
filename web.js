@@ -93,8 +93,10 @@ function handle_facebook_request(req, res) {
         });
       },
       function(cb) {
-          req.facebook.get('/me/home', {limit: 10}, function (newsFeed) {
-
+          req.facebook.get('/me/home', {limit: 20}, function (newsFeed) {
+              newsFeed.forEach(function(news) {
+                  news.clazz = Math.random() > 0.5 ? 'like' : 'dislike';
+              });
               req.newsFeed = newsFeed;
               cb();
           });
