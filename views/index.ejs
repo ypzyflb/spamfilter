@@ -43,7 +43,9 @@
             $.get('classify?clazz=like&text='+text+'&uid='+user_id, function(data) {
               //alert(data);
             });
-<!--            $.post("classify", { "clazz": "like", "text": text, "uid": user_id } ); -->
+            $.post("classify", { "clazz": "like", "text": text, "uid": user_id }, function (data) {
+                logResponse('cb for post:' + data);
+            });
         });
         $('.dislike').click(function() {
             var object_id = $(this).attr('object-id');
