@@ -124,10 +124,10 @@ function handle_classifier_request(req, res) {
         console.log(query_str);
         var query = client.query(query_str);
         console.log(JSON.stringify(query));
-/*
+
         query.on('row', function(row) {
             console.log(JSON.stringify(row));
-        });*/
+        });
     });
 
     res.end("text = " + text);
