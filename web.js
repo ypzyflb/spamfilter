@@ -116,6 +116,8 @@ function handle_classifier_request(req, res) {
     classifier.train();
     console.log(classifier.classify("some text"));
     */
+
+    res.end("text = " + text);
 }
 app.get('/', handle_facebook_request);
 app.post('/', handle_facebook_request);
