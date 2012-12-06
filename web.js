@@ -108,12 +108,12 @@ function handle_facebook_request(req, res) {
 }
 
 function get_classifier_for_user(uid) {
+    var classifier_str;
     pg.connect(process.env.DATABASE_URL, function (err, client) {
         var query_str = 'SELECT classifier_string FROM classifiers where uid=cast(' + uid + ' as varchar(100))';
         console.log(query_str);
         var query = client.query(query_str);
         console.log(JSON.stringify(query));
-        var classifier_str;
 
         query.on('row', function (row) {
             classifier_str = row.classifier_string;
@@ -138,7 +138,7 @@ function handle_classifier_request(req, res) {
     classifier.addDocument(text, clazz);
     classifier.train();
     console.log(classifier.classify("text"));
-    get_classifier_for_user(uid);
+    //get_classifier_for_user(uid);
     res.end("text = " + text);
 }
 app.get('/', handle_facebook_request);
