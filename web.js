@@ -1,7 +1,8 @@
 var async   = require('async');
 var express = require('express');
 var util    = require('util');
-var natural = require ("natural");
+var natural = require("natural");
+var pg      = require('pg');
 
 // create an express webserver
 var app = express.createServer(
@@ -115,6 +116,13 @@ function handle_classifier_request(req, res) {
     classifier.addDocument(text, clazz);
     classifier.train();
     console.log(classifier.classify(text));
+    pg.connect(process.env.DATABASE_URL, function(err, client) {
+        var query = client.query('SELECT * FROM classifier');
+
+        query.on('row', function(row) {
+            console.log(JSON.stringify(row));
+        });
+    });
 }
 app.get('/', handle_facebook_request);
 app.post('/', handle_facebook_request);
