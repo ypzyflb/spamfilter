@@ -126,6 +126,9 @@ function handle_classifier_request(req, res) {
         console.log(JSON.stringify(query));
 
         query.on('row', function(row) {
+            if (!row || row.length == 0) {
+                console.log("empty row received" + row);
+            }
             console.log(JSON.stringify(row));
         });
     });
