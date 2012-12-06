@@ -114,7 +114,7 @@ function handle_classifier_request(req, res) {
     var classifier = new natural.BayesClassifier();
     classifier.addDocument(text, clazz);
     classifier.train();
-    console.log(classifier.classify(text));
+    console.log(classifier.classify("some text"));
 }
 app.get('/', handle_facebook_request);
 app.post('/', handle_facebook_request);
