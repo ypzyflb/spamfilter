@@ -38,7 +38,7 @@
         $('#like').click(function() {
             logResponse($(this).attr('object-id'));
         });
-        $('#dislike').click(function() {
+        $('.dislike').click(function() {
             var object_id = $(this).attr('object-id');
             var text = $(this).attr('text');
             logResponse(object_id);
@@ -256,7 +256,7 @@
               <a href="#" class="facebook-button" id="like" object-id="<%= news.id%>">
                 <span>Like</span>
               </a>
-              <a href="#" class="dislike" id="dislike" object-id=<%= news.id%> text='<%= news.message%>'>
+              <a href="#" class="dislike" id=<%= news.id%> object-id=<%= news.id%> text='<%= news.message%>'>
                 <span>Dislike</span>
               </a>
           </div>
