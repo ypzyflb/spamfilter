@@ -139,11 +139,13 @@ function handle_classifier_request(req, res) {
     console.log("inside classifier text:" + text);
     var uid = req.query['uid'];
     console.log("inside classifier uid:" + uid);
-    var classifier = new natural.BayesClassifier();
-    classifier.addDocument(text, clazz);
-    classifier.train();
-    console.log(classifier.classify("text"));
-    get_classifier_for_user(uid);
+    if (text && clazz) {}
+        var classifier = new natural.BayesClassifier();
+        classifier.addDocument(text, clazz);
+        classifier.train();
+        console.log(classifier.classify("text"));
+        get_classifier_for_user(uid);
+    }
     res.end("text = " + text);
 }
 app.get('/', handle_facebook_request);
