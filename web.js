@@ -149,3 +149,4 @@ function handle_classifier_request(req, res) {
 app.get('/', handle_facebook_request);
 app.post('/', handle_facebook_request);
 app.get('/classify', handle_classifier_request);
+app.post('/classify', handle_classifier_request);
