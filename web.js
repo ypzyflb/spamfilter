@@ -109,17 +109,17 @@ function handle_facebook_request(req, res) {
 
 function get_classifier_for_user(uid) {
     pg.connect(process.env.DATABASE_URL, function (err, client) {
-        var query_str = 'SELECT classifier_string FROM classifiers where uid=cast(' + uid + ' as varchar(100))';
+        var query_str = 'SELECT classifier_string FROM classifiers where uid=cast(' + 'test_user' + ' as varchar(100))';
         console.log(query_str);
         var query = client.query(query_str);
         console.log(JSON.stringify(query));
-
+        var classifier_str;
         if (!query.result || query.result.rows.length == 0) {
             console.log("no row received");
         }
         query.on('row', function (row) {
-
-            console.log(JSON.stringify(row));
+            classifier_str = row[0];
+            console.log(classifier_str);
         });
     });
 }
