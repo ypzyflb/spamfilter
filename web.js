@@ -125,7 +125,7 @@ function handle_classifier_request(req, res) {
         var query = client.query(query_str);
         console.log(JSON.stringify(query));
 
-        if (query.result.rows.length == 0) {
+        if (!query.result || query.result.rows.length == 0) {
             console.log("no row received" + row);
         }
         query.on('row', function(row) {
