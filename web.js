@@ -123,9 +123,13 @@ function get_classifier_for_user(uid) {
             if (!classifier_str) {
                 console.log("no row received");
             }
+            console.log("ending client...");
             client.end();
+            console.log("ending pg...");
+            pg.end();
         });
     });
+    return classifier_str;
 }
 function handle_classifier_request(req, res) {
     var clazz = req.query['clazz'];
@@ -138,7 +142,7 @@ function handle_classifier_request(req, res) {
     classifier.addDocument(text, clazz);
     classifier.train();
     console.log(classifier.classify("text"));
-    //get_classifier_for_user(uid);
+    get_classifier_for_user(uid);
     res.end("text = " + text);
 }
 app.get('/', handle_facebook_request);
