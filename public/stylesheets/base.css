@@ -364,7 +364,7 @@ header .tagline {
   zoom: 1;
 }
 
-.dislike {
+.dislike span {
 color: #3b5998;
     font-weight: bold;
     text-decoration: none;
