@@ -125,10 +125,11 @@ function handle_classifier_request(req, res) {
         var query = client.query(query_str);
         console.log(JSON.stringify(query));
 
+        if (result.rows.length == 0) {
+            console.log("no row received" + row);
+        }
         query.on('row', function(row) {
-            if (!row || row.length == 0) {
-                console.log("empty row received" + row);
-            }
+
             console.log(JSON.stringify(row));
         });
     });
