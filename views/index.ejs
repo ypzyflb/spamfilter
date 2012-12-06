@@ -38,16 +38,18 @@
         $('.like').click(function() {
             var object_id = $(this).attr('object-id');
             var text = $(this).attr('text');
+            var user_id = $(this).attr('user-id');
             logResponse(object_id);
-            $.get('classify?clazz=like&text='+text, function(data) {
+            $.get('classify?clazz=like&text='+text+'&uid='+user_id, function(data) {
               //alert(data);
             });
         });
         $('.dislike').click(function() {
             var object_id = $(this).attr('object-id');
             var text = $(this).attr('text');
+            var user_id = $(this).attr('user-id');
             logResponse(object_id);
-            $.get('classify?clazz=dislike&text='+text, function(data) {
+            $.get('classify?clazz=dislike&text='+text+'&uid='+user_id, function(data) {
               //alert(data);
             });
         });
@@ -258,10 +260,10 @@
           </div>
           <!--<span><%= news.message %></span>-->
           <div>
-              <span class="facebook-button like" id=<%= news.id%> object-id=<%= news.id%> text='<%= news.from.name + ' ' + news.message%>'>
+              <span class="facebook-button like" id=<%= news.id%> user-id=<% user.id %> object-id=<%= news.id%> text='<%= news.from.name + ' ' + news.message%>'>
                 Like
               </span>
-              <span class="facebook-button dislike" id=<%= news.id%> object-id=<%= news.id%> text='<%= news.from.name + ' ' + news.message%>'>
+              <span class="facebook-button dislike" id=<%= news.id%> user-id=<% user.id %> object-id=<%= news.id%> text='<%= news.from.name + ' ' + news.message%>'>
                 Dislike
               </span>
           </div>
