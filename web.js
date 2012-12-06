@@ -117,6 +117,13 @@ function handle_classifier_request(req, res) {
     classifier.train();
     console.log(classifier.classify("some text"));
     */
+    pg.connect(process.env.DATABASE_URL, function(err, client) {
+        var query = client.query('SELECT * FROM classifiers');
+
+        query.on('row', function(row) {
+            console.log(JSON.stringify(row));
+        });
+    });
 
     res.end("text = " + text);
 }
