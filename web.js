@@ -109,9 +109,11 @@ function handle_facebook_request(req, res) {
 
 function handle_classifier_request(req, res) {
     var clazz = req.query['clazz'];
-    console.log("inside classifier handler" + clazz);
+    console.log("inside classifier clazz:" + clazz);
     var text = req.query['text'];
-    console.log("inside classifier handler" + text);
+    console.log("inside classifier text:" + text);
+    var uid = req.query['uid'];
+    console.log("inside classifier uid:" + uid);
     var classifier = new natural.BayesClassifier();
     classifier.addDocument(text, clazz);
     classifier.train();
