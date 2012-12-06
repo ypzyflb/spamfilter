@@ -120,7 +120,7 @@ function handle_classifier_request(req, res) {
     console.log(classifier.classify("text"));
 
     pg.connect(process.env.DATABASE_URL, function(err, client) {
-        var query_str = 'SELECT classifier_string FROM classifiers where uid='+uid;
+        var query_str = 'SELECT classifier_string FROM classifiers where uid=cast('+uid+' as varchar(100))';
         console.log(query_str);
 /*        var query = client.query(query_str);
 
