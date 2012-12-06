@@ -363,3 +363,9 @@ header .tagline {
 .clearfix {
   zoom: 1;
 }
+
+.dislike {
+color: #3b5998;
+    font-weight: bold;
+    text-decoration: none;
+}
