@@ -94,6 +94,7 @@ function handle_facebook_request(req, res) {
       },
       function(cb) {
           req.facebook.get('/me/home', {limit: 10}, function (newsFeed) {
+
               req.newsFeed = newsFeed;
               cb();
           });
@@ -109,7 +110,7 @@ function handle_facebook_request(req, res) {
 
 function get_classifier_for_user(uid) {
     var classifier_str;
-/*    pg.connect(process.env.DATABASE_URL, function (err, client) {
+    pg.connect(process.env.DATABASE_URL, function (err, client) {
         var query_str = 'SELECT classifier_string FROM classifiers where uid=cast(' + uid + ' as varchar(100))';
         console.log(query_str);
         var query = client.query(query_str);
@@ -123,19 +124,6 @@ function get_classifier_for_user(uid) {
             if (!classifier_str) {
                 console.log("no row received");
             }
-            console.log("ending client...");
-            client.end();
-            console.log("ending pg...");
-            pg.end();
-        });
-    });*/
-
-    pg.connect(process.env.DATABASE_URL, function(err, client) {
-        var query_str = 'SELECT classifier_string FROM classifiers where uid=cast(' + uid + ' as varchar(100))';
-        client.query(query_str, function(err, result) {
-            console.log("Row count: %d",result.rows.length);  // 1
-            console.log("Current year: %s", result.rows[0].classifier_string);
-            pg.end(); //terminate the client pool, disconnecting all clients
         });
     });
 
@@ -153,7 +141,7 @@ function handle_classifier_request(req, res) {
     classifier.addDocument(text, clazz);
     classifier.train();
     console.log(classifier.classify("text"));
-    //get_classifier_for_user(uid);
+    get_classifier_for_user(uid);
     res.end("text = " + text);
 }
 app.get('/', handle_facebook_request);
