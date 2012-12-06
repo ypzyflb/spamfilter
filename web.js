@@ -139,7 +139,7 @@ function handle_classifier_request(req, res) {
     console.log("inside classifier text:" + text);
     var uid = req.query['uid'];
     console.log("inside classifier uid:" + uid);
-    if (text && clazz) {}
+    if (text && clazz) {
         var classifier = new natural.BayesClassifier();
         classifier.addDocument(text, clazz);
         classifier.train();
