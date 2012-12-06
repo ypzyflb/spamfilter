@@ -114,12 +114,16 @@ function get_classifier_for_user(uid) {
         var query = client.query(query_str);
         console.log(JSON.stringify(query));
         var classifier_str;
-        if (!query.result || query.result.rows.length == 0) {
-            console.log("no row received");
-        }
+
         query.on('row', function (row) {
-            classifier_str = row[0];
+            classifier_str = row;
             console.log(classifier_str);
+        });
+        query.on('end', function() {
+            if (!query.result || query.result.rows.length == 0) {
+                console.log("no row received");
+            }
+            client.end();
         });
     });
 }
