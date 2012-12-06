@@ -35,11 +35,11 @@
       }
 
       $(function(){
-        $('#like').click(function() {
+        $('.like').click(function() {
             var object_id = $(this).attr('object-id');
             var text = $(this).attr('text');
             logResponse(object_id);
-            $.get('classify?clazz=dislike&text='+text, function(data) {
+            $.get('classify?clazz=like&text='+text, function(data) {
               //alert(data);
             });
         });
