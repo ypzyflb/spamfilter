@@ -253,10 +253,10 @@
           </div>
           <!--<span><%= news.message %></span>-->
           <div>
-              <a href="#" class="facebook-button" id="like" object-id="<%= news.id%>">
-                <span>Like</span>
-              </a>
-              <span class="dislike" id=<%= news.id%> object-id=<%= news.id%> text='<%= news.from.name + ' ' + news.message%>'>
+              <span class="facebook-button like" id=<%= news.id%> object-id=<%= news.id%> text='<%= news.from.name + ' ' + news.message%>'>
+                Like
+              </span>
+              <span class="facebook-button dislike" id=<%= news.id%> object-id=<%= news.id%> text='<%= news.from.name + ' ' + news.message%>'>
                 Dislike
               </span>
           </div>
