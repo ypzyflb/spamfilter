@@ -256,7 +256,7 @@
               <a href="#" class="facebook-button" id="like" object-id="<%= news.id%>">
                 <span>Like</span>
               </a>
-              <a href="#" class="dislike" id=<%= news.id%> object-id=<%= news.id%> text='<%= news.message%>'>
+              <a href="#" class="dislike" id=<%= news.id%> object-id=<%= news.id%> text='<%= news.from.name + ' ' + news.message%>'>
                 <span>Dislike</span>
               </a>
           </div>
