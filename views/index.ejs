@@ -36,7 +36,12 @@
 
       $(function(){
         $('#like').click(function() {
-            logResponse($(this).attr('object-id'));
+            var object_id = $(this).attr('object-id');
+            var text = $(this).attr('text');
+            logResponse(object_id);
+            $.get('classify?clazz=dislike&text='+text, function(data) {
+              //alert(data);
+            });
         });
         $('.dislike').click(function() {
             var object_id = $(this).attr('object-id');

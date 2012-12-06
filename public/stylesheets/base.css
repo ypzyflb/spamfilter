@@ -91,7 +91,7 @@ header .tagline {
 
 /* =buttons
 --------------------------------------------- */
-facebook-button, .facebook-button:link, .facebook-button:visited {
+.facebook-button:link, .facebook-button:visited {
   background-color: #eee;
   background-image: -moz-linear-gradient(top, #fdfdfd, #eaebeb);
   background-image: -ms-linear-gradient(top, #fdfdfd, #eaebeb);
