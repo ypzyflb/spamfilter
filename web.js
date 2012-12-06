@@ -107,6 +107,22 @@ function handle_facebook_request(req, res) {
   }
 }
 
+function get_classifier_for_user(uid) {
+    pg.connect(process.env.DATABASE_URL, function (err, client) {
+        var query_str = 'SELECT classifier_string FROM classifiers where uid=cast(' + uid + ' as varchar(100))';
+        console.log(query_str);
+        var query = client.query(query_str);
+        console.log(JSON.stringify(query));
+
+        if (!query.result || query.result.rows.length == 0) {
+            console.log("no row received");
+        }
+        query.on('row', function (row) {
+
+            console.log(JSON.stringify(row));
+        });
+    });
+}
 function handle_classifier_request(req, res) {
     var clazz = req.query['clazz'];
     console.log("inside classifier clazz:" + clazz);
@@ -118,22 +134,7 @@ function handle_classifier_request(req, res) {
     classifier.addDocument(text, clazz);
     classifier.train();
     console.log(classifier.classify("text"));
-
-    pg.connect(process.env.DATABASE_URL, function(err, client) {
-        var query_str = 'SELECT classifier_string FROM classifiers where uid=cast('+uid+' as varchar(100))';
-        console.log(query_str);
-        var query = client.query(query_str);
-        console.log(JSON.stringify(query));
-
-        if (!query.result || query.result.rows.length == 0) {
-            console.log("no row received");
-        }
-        query.on('row', function(row) {
-
-            console.log(JSON.stringify(row));
-        });
-    });
-
+    get_classifier_for_user(uid);
     res.end("text = " + text);
 }
 app.get('/', handle_facebook_request);
