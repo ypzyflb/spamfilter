@@ -116,11 +116,11 @@ function get_classifier_for_user(uid) {
         var classifier_str;
 
         query.on('row', function (row) {
-            classifier_str = row;
+            classifier_str = row.classifier_string;
             console.log(classifier_str);
         });
         query.on('end', function() {
-            if (!query.result || query.result.rows.length == 0) {
+            if (!classifier_str) {
                 console.log("no row received");
             }
             client.end();
