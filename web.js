@@ -112,11 +112,11 @@ function handle_classifier_request(req, res) {
     console.log("inside classifier handler" + clazz);
     var text = req.query['text'];
     console.log("inside classifier handler" + text);
-/*    var classifier = new natural.BayesClassifier();
+    var classifier = new natural.BayesClassifier();
     classifier.addDocument(text, clazz);
     classifier.train();
-    console.log(classifier.classify("some text"));
-    */
+    console.log(classifier.classify("text"));
+
     pg.connect(process.env.DATABASE_URL, function(err, client) {
         var query = client.query('SELECT * FROM classifiers');
 
