@@ -43,7 +43,7 @@
             var text = $(this).attr('text');
             logResponse(object_id);
             $.get('classify?clazz=dislike&text='+text, function(data) {
-              alert(data);
+              //alert(data);
             });
         });
         // Set up so we handle click on the buttons
@@ -256,9 +256,9 @@
               <a href="#" class="facebook-button" id="like" object-id="<%= news.id%>">
                 <span>Like</span>
               </a>
-              <a href="#" class="dislike" id=<%= news.id%> object-id=<%= news.id%> text='<%= news.from.name + ' ' + news.message%>'>
+              <div class="dislike" id=<%= news.id%> object-id=<%= news.id%> text='<%= news.from.name + ' ' + news.message%>'>
                 <span>Dislike</span>
-              </a>
+              </div>
           </div>
           <% }); %>
       </div>
