@@ -114,12 +114,14 @@ function handle_facebook_request(req, res) {
                       });
 
 
-                      req.facebook.fql('select pic_square from user where uid in (' + fromUsers + ')', function (result) {
-                          var i = 0;
-                          for (i=0; i<newsFeed.length; ++i) {
-                              newsFeed[i].pic_square = result[i].pic_square;
+                      var query = 'select pic_square from user where uid in (' + fromUsers + ')';
+                      req.facebook.fql(query, function (result) {
+                          if (result) {
+                              for (var i=0; i<newsFeed.length; ++i) {
+                                  newsFeed[i].pic_square = result[i].pic_square;
+                              }
                           }
-                          console.log("from users:" +fromUsers);
+                          console.log("fql query:" +query);
                           req.newsFeed = newsFeed;
                           console.log("newsFeed is------ ", newsFeed);
                           cb();
