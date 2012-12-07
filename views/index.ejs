@@ -58,7 +58,7 @@
       }
 $(document).ready(function() {
 	$('.msgTime').each(function(index) {
-	    console.log(index + ' msgTime: ' + $(this).text());
+	    console.log(index + ' msgTime: ' + makeReadableDate($(this).text()));
 	});
 
 
@@ -225,8 +225,8 @@ $(document).ready(function() {
       </div>
 
 	<div id="wontshow">
-		<div class="fbinfobox" style="width: 500px;">
-            <b>Please feel free to 'like' or 'dislike' the posts shown here. Your facebook newsfeed will not be affected.</b>
+		<div class="fbinfobox" style="width: 680px;">
+            <b>Please feel free to 'like' or 'dislike' the posts shown here. <br/>Your Facebook newsfeed will not be affected.</b>
         </div>
 
 	</div>
@@ -252,7 +252,7 @@ $(document).ready(function() {
    <section id="bg" class="clearfix newsFeedBg">
 	   <br>
 			<div class="fbgreybox" style="width: 680px;">
-		            Your News Feed to be trained.
+		             <br/> Your News Feed to be trained. <br/>
 		        </div>
 
 			<ul class='uiList uiStream'>
@@ -268,7 +268,7 @@ $(document).ready(function() {
 
 						<div class="mainContnents <% if (news.clazz == 'dislike') { %> hide <% } %>">
 
-							<% if (news.picture) { %><img class="actorPhoto lfloat" src=<%= news.picture %> alt="" width='40px' height='40px'> <% } else { %>  <img class="actorPhoto lfloat" src="../public/images/avata.jpeg" alt="" width='40px' height='40px'> <% } %>
+							<% if (news.picture) { %><img class="actorPhoto lfloat" src=<%= news.picture %> alt="" width='40px' height='40px'> <% } else { %>  <img class="actorPhoto lfloat" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcToEocMRbm115q4LdRyHR6sfSQf-uAY6a96DPGM_JCQ7MBJ6fDk" alt="" width='40px' height='40px'> <% } %>
 
 
 						<div class = 'storyInnerContent'>
@@ -295,8 +295,8 @@ $(document).ready(function() {
 									<div class="username">
 										<%= news.from.name %>
 									</div>
-									<div class="msgTime">
-										<%= news.created_time %>
+									<div >
+										<div class="msgTime"><%= news.created_time %></div>
 									<br/>
 									 <% if (news.message) { %> <%= news.message %>  <% } %>
 									<% if (news.story) { %> <%= news.story %>  <% } %>
