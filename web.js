@@ -142,10 +142,16 @@ function insert_classifier_for_user(uid, c_str) {
     });
 }
 
-function print(uid, c_str) {
-    console.log("printing uid " + uid);
-    console.log("printing c_str "+ c_str);
+function update_classifier_for_user(uid, c_str) {
+    pg.connect(process.env.DATABASE_URL, function (err, client) {
+        client.query ({
+            name: 'update classifiers',
+            text: 'UPDATE classifiers SET classifier_string= $2 where uid= $1)',
+            values: [uid, c_str]
+        });
+    });
 }
+
 function handle_classifier_request(req, res) {
     var clazz = req.query['clazz'] || req.body.clazz;
     //console.log("inside classifier clazz:" + clazz);
@@ -170,6 +176,9 @@ function handle_classifier_request(req, res) {
 
             if (!existing_user) {
                 insert_classifier_for_user(uid, JSON.stringify(classifier));
+            }
+            else {
+                update_classifier_for_user(uid, JSON.stringify(classifier));
             }
         });
     }
