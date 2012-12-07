@@ -130,7 +130,13 @@ function get_classifier_for_user(uid) {
     });
 
     return classifier_str;
+}
 
+function insert_classifier_for_user(uid, c_str) {
+    pg.connect(process.env.DATABASE_URL, function (err, client) {
+        var query_str = 'INSERT INTO classifiers (uid, classifier_string) VALUES (' + uid + ', ' + c_str + ')';
+        console.log(query_str);
+    });
 }
 function handle_classifier_request(req, res) {
     var clazz = req.query['clazz'] || req.body.clazz;
@@ -142,16 +148,22 @@ function handle_classifier_request(req, res) {
     if (text && clazz && uid) {
         var classifier_str = get_classifier_for_user(uid);
         var classifier;
+        var new_user;
         if (classifier_str) {
+            new_user = false;
             classifier = natural.BayesClassifier.restore(JSON.parse(classifier_str));
         }
         else {
+            new_user = true;
             classifier = new natural.BayesClassifier();
         }
         classifier.addDocument(text, clazz);
         classifier.train();
         console.log(JSON.stringify(classifier));
 
+        if (new_user) {
+            insert_classifier_for_user(uid, JSON.stringify(classifier));
+        }
     }
     res.end("text = " + text);
 }
