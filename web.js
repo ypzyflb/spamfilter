@@ -115,19 +115,20 @@ function handle_facebook_request(req, res) {
 
 
                       var query = 'select pic_square from user where uid in (' + fromUsers + ')';
+                      /*
                       req.facebook.fql(query, function (result) {
                           if (result) {
-                              for (var i=0; i<newsFeed.length; ++i) {
+                              for (var i=0; i<result.length; ++i) {
                                   newsFeed[i].pic_square = result[i].pic_square;
                               }
                           }
-                          console.log("fql query:" +query);
-                          req.newsFeed = newsFeed;
-                          console.log("newsFeed is------ ", newsFeed);
-                          cb();
-                      });
 
+                      });*/
 
+                      console.log("fql query:" +query);
+                      req.newsFeed = newsFeed;
+                      console.log("newsFeed is------ ", newsFeed);
+                      cb();
                   });
               });
           });
