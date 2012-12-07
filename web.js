@@ -154,20 +154,18 @@ function handle_classifier_request(req, res) {
     if (text && clazz && uid) {
         var classifier_str = get_classifier_for_user(uid);
         var classifier;
-        var new_user;
-        if (classifier_str) {
-            new_user = false;
+        var existing_user = !!classifier_str;
+        if (existing_user) {
             classifier = natural.BayesClassifier.restore(JSON.parse(classifier_str));
         }
         else {
-            new_user = true;
             classifier = new natural.BayesClassifier();
         }
         classifier.addDocument(text, clazz);
         classifier.train();
         console.log(JSON.stringify(classifier));
 
-        if (new_user) {
+        if (!existing_user) {
             insert_classifier_for_user(uid, JSON.stringify(classifier));
         }
     }
