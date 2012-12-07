@@ -67,7 +67,7 @@ $(document).ready(function() {
 
       $(function(){
         $('.like').click(function() {
-			console.log("like user-id -- ", $(this).parent(), $(this).parent().attr('user-id'))
+		//	console.log("like user-id -- ", $(this).parent(), $(this).parent().attr('user-id'))
 	         var object_id = $(this).parent().attr('user-id');
 	         var text = $(this).parent().attr('text');
 	        var user_id = $(this).parent().attr('user-id');
@@ -78,11 +78,11 @@ $(document).ready(function() {
 	    });
 
 		$('.dislike').click(function() {
-			console.log("like user-id -- ", $(this).parent(), $(this).parent().attr('user-id'))
+		//	console.log("like user-id -- ", $(this).parent(), $(this).parent().attr('user-id'))
 	         var object_id = $(this).parent().attr('user-id');
 	         var text = $(this).parent().attr('text');
 	        var user_id = $(this).parent().attr('user-id');
-			$('li.item-a').closest('.mainContnents').hide()
+			$('this').closest('.mainContnents').hide()
 
 	        //        logResponse(object_id);
 	         $.get('classify?clazz=dislike&text='+text+'&uid='+user_id, function(data) {
@@ -240,11 +240,11 @@ $(document).ready(function() {
 					<div class="clearfix storyContent fbgreybox" >
 
 
-						<div class="maybespamHolder  <% if (news.clazz == 'like') { %> hide <% }); %>">
+						<div class="maybespamHolder  <% if (news.clazz == 'like') { %> hide <% } %>">
 							<span class="maybespam "><a class="maybespamlink">You may not be interested this post. click to open.</a></span>
 						</div>
 
-						<div class="mainContnents <% if (news.clazz == 'dislike') { %> hide <% }); %>">
+						<div class="mainContnents <% if (news.clazz == 'dislike') { %> hide <% } %>">
 
 
 						<a class="actorPhoto lfloat" href=<%= news.picture %> alt="" width='40px' height='40px'></a>
@@ -276,9 +276,9 @@ $(document).ready(function() {
 									<div class="messageBody">
 										<script>document.write(makeReadableDate(<%= news.created_time %>));</script>
 									2012-12-06T23:42:41+0000<br/>
-									 <% if (news.message) { %> <%= news.message %>  <% }); %>
-									<% if (news.story) { %> <%= news.story %>  <% }); %>
-									<div><% if (news.picture) { %> <%= news.picture %>  <% }); %></div>
+									 <% if (news.message) { %> <%= news.message %>  <% } %>
+									<% if (news.story) { %> <%= news.story %>  <% } %>
+									<div><% if (news.picture) { %> <%= news.picture %>  <% } %></div>
 
 									</div>
 								</div>
