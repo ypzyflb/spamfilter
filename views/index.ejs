@@ -28,6 +28,29 @@
     <script type="text/javascript" src="/scripts/jquery.min.js"></script>
 
     <script type="text/javascript">
+
+	function makeReadableDate(oldDate) {
+	    var oldDateVal = new Date(oldDate);
+	     var nowDate = new Date();
+	     var diff = nowDate.getTime()-oldDateVal.getTime();
+	     var diffdate = diff / (1000*60*60*24)
+	     if(diffdate > 1){
+	          return parseInt(diffdate)+" days ago";
+	     }else{
+	          var diffHour = diff / (1000*60*60)
+	          if(diffHour > 1){
+	               return parseInt(diffHour)+" hours ago";
+	          }
+
+	          var diffMin = diff / (1000*60);
+	          if(diffMin > 1){
+	               return parseInt(diffMin)+" min ago";
+	          }
+
+	          return "few moments ago";
+	     }
+	}
+
       function logResponse(response) {
         if (console && console.log) {
           console.log('Logging...', response);
@@ -59,6 +82,8 @@ $(document).ready(function() {
 	         var object_id = $(this).parent().attr('user-id');
 	         var text = $(this).parent().attr('text');
 	        var user_id = $(this).parent().attr('user-id');
+			$('li.item-a').closest('.mainContnents').hide()
+
 	        //        logResponse(object_id);
 	         $.get('classify?clazz=dislike&text='+text+'&uid='+user_id, function(data) {
 	                   console.log('The response was', data);
@@ -208,9 +233,6 @@ $(document).ready(function() {
 
    <section id="bg" class="clearfix newsFeedBg">
 
-        <h3>NewsFeed</h3>
-
-
 			<ul class='uiList uiStream'>
 		 <% req.newsFeed.forEach(function(news) { %>
 
@@ -218,20 +240,20 @@ $(document).ready(function() {
 					<div class="clearfix storyContent fbgreybox" >
 
 
-						<div class="maybespamHolder">
-							<span class="maybespam"><a class="maybespamlink">You may not be interested this post. click to open.</a></span>
+						<div class="maybespamHolder  <% if (news.clazz == 'like') { %> hide <% }); %>">
+							<span class="maybespam "><a class="maybespamlink">You may not be interested this post. click to open.</a></span>
 						</div>
-						<div class="mainContnents hide">
+
+						<div class="mainContnents <% if (news.clazz == 'dislike') { %> hide <% }); %>">
 
 
-						<a class="actorPhoto lfloat" href="https://www.facebook.com/younggyun.koh"><img class="profilePic" src="https://fbcdn-photos-a.akamaihd.net/hphotos-ak-snc6/165398_1493107333843_8348989_s.jpg" alt="" width='40px' height='40px'></a>
+						<a class="actorPhoto lfloat" href=<%= news.picture %> alt="" width='40px' height='40px'></a>
 
 						<div class = 'storyInnerContent'>
 
 							<div class="likedislike">
-								<span class="notaspam"> classified as <%= news.clazz %></span>
+								<span class="notaspam"> You may <%= news.clazz %> this message.</span>
 								<span>
-
 
 									<a href="#" class="facebook-button" id="<%= news.id%>" data-url="" object-id="<%= news.id%>" user-id="<%= user.id%>" text='<%= JSON.stringify(news)%>'>
 					                	<span class="like">Like</span>
@@ -252,8 +274,12 @@ $(document).ready(function() {
 										<%= news.from.name %>
 									</div>
 									<div class="messageBody">
+										<script>document.write(makeReadableDate(<%= news.created_time %>));</script>
 									2012-12-06T23:42:41+0000<br/>
-									<%= news.message %>
+									 <% if (news.message) { %> <%= news.message %>  <% }); %>
+									<% if (news.story) { %> <%= news.story %>  <% }); %>
+									<div><% if (news.picture) { %> <%= news.picture %>  <% }); %></div>
+
 									</div>
 								</div>
 
