@@ -78,12 +78,12 @@ $(document).ready(function() {
 	    });
 
 		$('.dislike').click(function() {
-		//	console.log("like user-id -- ", $(this).parent(), $(this).parent().attr('user-id'))
+		console.log("dislike -- ", $(this).closest('.mainContnents'), $(this).closest('.maybespamHolder'))
 	         var object_id = $(this).parent().attr('user-id');
 	         var text = $(this).parent().attr('text');
 	        var user_id = $(this).parent().attr('user-id');
 			$(this).closest('.mainContnents').addClass('hide')
-			$(this).closest('.maybespamHolder').removeClass('hide')
+			$(this).parent().parent().parent().closest('.maybespamHolder').removeClass('hide')
 
 	        //        logResponse(object_id);
 	         $.get('classify?clazz=dislike&text='+text+'&uid='+user_id, function(data) {
