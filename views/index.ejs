@@ -67,18 +67,19 @@ $(document).ready(function() {
 
       $(function(){
         $('.like').click(function() {
-		//	console.log("like user-id -- ", $(this).parent(), $(this).parent().attr('user-id'))
+			console.log("like user-id -- ", $(this).closest('.notaspam'))
 	         var object_id = $(this).parent().attr('user-id');
 	         var text = $(this).parent().attr('text');
 	        var user_id = $(this).parent().attr('user-id');
-	        //        logResponse(object_id);
+			$(this).closest('.notaspam').html('You liked this message.')
+
             $.post("classify", { "clazz": "like", "text": text, "uid": user_id }, function (data) {
                 logResponse('cb for post:' + data);
             }, 'json');
 	    });
 
 		$('.dislike').click(function() {
-		console.log("dislike -- ", $(this).closest('.mainContnents')[0], $(this).parent().parent().closest('.maybespamHolder')[0])
+		console.log("dislike -- ", $(this).closest('.mainContnents')[0], $(this).closest('.mainContnents').closest('.maybespamHolder')[0])
 	         var object_id = $(this).parent().attr('user-id');
 	         var text = $(this).parent().attr('text');
 	        var user_id = $(this).parent().attr('user-id');
