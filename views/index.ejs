@@ -216,17 +216,21 @@ $(document).ready(function() {
             </li>
           </ul>
         </div>
-	<div id="wontshow">
-		Please feel free to 'like' or 'dislike' the posts shown here. Your facebook newsfeed will not be affected.
-	</div>
 
       </div>
+
+	<div id="wontshow">
+		<b>Please feel free to 'like' or 'dislike' the posts shown here. Your facebook newsfeed will not be affected.</b>
+	</div>
+
       <% } else { %>
       <div>
         <h1>Welcome</h1>
         <div class="fb-login-button" data-scope="user_likes,user_photos,read_stream"></div>
       </div>
       <% } %>
+
+
     </header>
 
 
@@ -239,7 +243,10 @@ $(document).ready(function() {
 
    <section id="bg" class="clearfix newsFeedBg">
 	   <br>
-			NewFeed
+			<div class="fbbluebox" style="width: 680px;">
+		            News Feed
+		        </div>
+
 			<ul class='uiList uiStream'>
 		 <% req.newsFeed.forEach(function(news) { %>
 
@@ -253,7 +260,7 @@ $(document).ready(function() {
 
 						<div class="mainContnents <% if (news.clazz == 'dislike') { %> hide <% } %>">
 
-							<% if (news.picture) { %><img class="actorPhoto lfloat" src=<%= news.picture %> alt="" width='40px' height='40px'> <% } else { %>   <% } %>
+							<% if (news.picture) { %><img class="actorPhoto lfloat" src=<%= news.picture %> alt="" width='40px' height='40px'> <% } else { %>   <% } else{ %> <img class="actorPhoto lfloat" src="../public/images/avata.jpeg" alt="" width='40px' height='40px'> <% } %>
 
 
 						<div class = 'storyInnerContent'>
