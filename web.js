@@ -135,6 +135,7 @@ function get_classifier_for_user(uid) {
 function insert_classifier_for_user(uid, c_str) {
     pg.connect(process.env.DATABASE_URL, function (err, client) {
         var query_str = 'INSERT INTO classifiers (uid, classifier_string) VALUES (' + uid + ', ' + c_str + ')';
+        client.query(query_str);
         console.log(query_str);
     });
 }
