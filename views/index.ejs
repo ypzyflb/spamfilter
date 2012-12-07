@@ -71,7 +71,7 @@ $(document).ready(function() {
 	         var object_id = $(this).parent().attr('user-id');
 	         var text = $(this).parent().attr('text');
 	        var user_id = $(this).parent().attr('user-id');
-			 $(e.target).parent().siblings('.notaspam').html('You liked this message.');
+			$(e.target).parent().parent().siblings('.notaspam').html('You liked this message.');
 
             $.post("classify", { "clazz": "like", "text": text, "uid": user_id }, function (data) {
                 logResponse('cb for post:' + data);
@@ -79,12 +79,12 @@ $(document).ready(function() {
 	    });
 
 		$('.dislike').click(function(e) {
-		console.log("dislike -- ?",$(e.target).parent().parent().parent().parent().parent()[0])
+		console.log("dislike -- ?",$(e.target).parent().parent().parent().parent().parent().siblings('.maybespamHolder'))
 	         var object_id = $(this).parent().attr('user-id');
 	         var text = $(this).parent().attr('text');
 	        var user_id = $(this).parent().attr('user-id');
 			$(e.target).closest('.mainContnents').hide();//addClass('hide')
-			$(e.target).parent().parent().parent().parent().parent().find('.maybespamHolder').show();//removeClass('hide')
+			$(e.target).parent().parent().parent().parent().parent().siblings('.maybespamHolder').removeClass('hide');//removeClass('hide')
 
 	        //        logResponse(object_id);
             $.post("classify", { "clazz": "dislike", "text": text, "uid": user_id }, function (data) {
