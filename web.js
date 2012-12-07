@@ -155,8 +155,8 @@ function handle_classifier_request(req, res) {
     //console.log("inside classifier uid:" + uid);
     if (text && clazz && uid) {
         get_classifier_for_user(uid, function (classifier_str) {
-            console.log("classifier_str" + classifier_str);
-            /*var classifier;
+            console.log("classifier_str " + classifier_str);
+            var classifier;
             var existing_user = !!classifier_str;
             if (existing_user) {
                 classifier = natural.BayesClassifier.restore(JSON.parse(classifier_str));
@@ -170,7 +170,7 @@ function handle_classifier_request(req, res) {
 
             if (!existing_user) {
                 insert_classifier_for_user(uid, JSON.stringify(classifier));
-            }*/
+            }
         });
     }
     res.end("text = " + text);
