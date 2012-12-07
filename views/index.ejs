@@ -83,6 +83,7 @@ $(document).ready(function() {
 	         var text = $(this).parent().attr('text');
 	        var user_id = $(this).parent().attr('user-id');
 			$(this).closest('.mainContnents').hide()
+			$(this).closest('.maybespamHolder').show()
 
 	        //        logResponse(object_id);
 	         $.get('classify?clazz=dislike&text='+text+'&uid='+user_id, function(data) {
@@ -232,6 +233,9 @@ $(document).ready(function() {
     <% if (user) { %>
 
    <section id="bg" class="clearfix newsFeedBg">
+	   <div class="fbgreybox" style="width: 680px;">
+           Newsfeed
+       </div>
 
 			<ul class='uiList uiStream'>
 		 <% req.newsFeed.forEach(function(news) { %>
@@ -274,7 +278,7 @@ $(document).ready(function() {
 										<%= news.from.name %>
 									</div>
 									<div class="messageBody">
-										<script>var t = <%= news.created_time %>;document.write(makeReadableDate(t));</script>
+										<script>var t = <%= news.created_time %>;makeReadableDate(t);</script>
 									<br/>
 									 <% if (news.message) { %> <%= news.message %>  <% } %>
 									<% if (news.story) { %> <%= news.story %>  <% } %>
