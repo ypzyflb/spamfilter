@@ -99,17 +99,15 @@ function handle_facebook_request(req, res) {
                       var classifier;
                       if (c_str) {
                           classifier = natural.BayesClassifier.restore(JSON.parse(c_str));
-                          console.log ("getting the classifier" + JSON.stringify(classifier));
+                          //console.log ("getting the classifier" + JSON.stringify(classifier));
                       }
-
+                      newsFeed.forEach(function(news) {
+                          news.clazz = classifier? classifier.classify(JSON.stringify(news)) : 'like';
+                      });
+                      req.newsFeed = newsFeed;
+                      cb();
                   });
               });
-
-              newsFeed.forEach(function(news) {
-                  news.clazz = Math.random() > 0.5 ? 'like' : 'dislike';
-              });
-              req.newsFeed = newsFeed;
-              cb();
           });
       }
     ], function() {
