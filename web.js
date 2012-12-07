@@ -120,7 +120,7 @@ function get_classifier_for_user(uid) {
 
         query.on('row', function (row) {
             classifier_str = row.classifier_string;
-            console.log(classifier_str);
+            //console.log(classifier_str);
         });
         query.on('end', function() {
             if (!classifier_str) {
