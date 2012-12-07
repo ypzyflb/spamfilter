@@ -33,26 +33,37 @@
           console.log('Logging...', response);
         }
       }
+$(document).ready(function() {
+	$('.maybespam').click(function(e){
+				e.preventDefault();
+			console.log("maybespam is CLICKD", $(e.target).parent().parent().parent().find('.notaspam').html())
+			$(e.target).parent().parent().siblings('.mainContnents').show('fast');
+			$(e.target).parent().remove();
+			$(e.target).parent().parent().parent().find('.notaspam').html('<a>Not a spam? then like this to U-Dislike </a>')
+		})
 
       $(function(){
         $('.like').click(function() {
-            var object_id = $(this).attr('object-id');
-            var text = $(this).attr('text');
-            var user_id = $(this).attr('user-id');
-            logResponse(text);
-            $.post("classify", { "clazz": "like", "text": text, "uid": user_id }, function (data) {
-                logResponse('cb for post:' + data);
-            }, 'json');
-        });
-        $('.dislike').click(function() {
-            var object_id = $(this).attr('object-id');
-            var text = $(this).attr('text');
-            var user_id = $(this).attr('user-id');
-            logResponse(text);
-            $.post("classify", { "clazz": "dislike", "text": text, "uid": user_id }, function (data) {
-                logResponse('cb for post:' + data);
-            }, 'json');
-        });
+			console.log("like user-id -- ", $(this).parent(), $(this).parent().attr('user-id'))
+	         var object_id = $(this).parent().attr('user-id');
+	         var text = $(this).parent().attr('text');
+	        var user_id = $(this).parent().attr('user-id');
+	        //        logResponse(object_id);
+	         $.get('classify?clazz=like&text='+text+'&uid='+user_id, function(data) {
+	                   console.log('The response was', data);
+	                 });
+	    });
+
+		$('.dislike').click(function() {
+			console.log("like user-id -- ", $(this).parent(), $(this).parent().attr('user-id'))
+	         var object_id = $(this).parent().attr('user-id');
+	         var text = $(this).parent().attr('text');
+	        var user_id = $(this).parent().attr('user-id');
+	        //        logResponse(object_id);
+	         $.get('classify?clazz=dislike&text='+text+'&uid='+user_id, function(data) {
+	                   console.log('The response was', data);
+	                 });
+	    });
         // Set up so we handle click on the buttons
         $('#postToWall').click(function() {
           FB.ui(
@@ -99,6 +110,8 @@
           );
         });
       });
+
+})
     </script>
 
     <!--[if IE]>
