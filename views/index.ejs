@@ -30,7 +30,7 @@
     <script type="text/javascript">
       function logResponse(response) {
         if (console && console.log) {
-          console.log('The response was', response);
+          console.log('Logging...', response);
         }
       }
 
@@ -39,7 +39,7 @@
             var object_id = $(this).attr('object-id');
             var text = $(this).attr('text');
             var user_id = $(this).attr('user-id');
-            logResponse(object_id);
+            logResponse(text);
             $.post("classify", { "clazz": "like", "text": text, "uid": user_id }, function (data) {
                 logResponse('cb for post:' + data);
             });
@@ -48,9 +48,9 @@
             var object_id = $(this).attr('object-id');
             var text = $(this).attr('text');
             var user_id = $(this).attr('user-id');
-            logResponse(object_id);
-            $.get('classify?clazz=dislike&text='+text+'&uid='+user_id, function(data) {
-              //alert(data);
+            logResponse(text);
+            $.post("classify", { "clazz": "like", "text": text, "uid": user_id }, function (data) {
+                logResponse('cb for post:' + data);
             });
         });
         // Set up so we handle click on the buttons
