@@ -266,7 +266,7 @@ $(document).ready(function() {
 					                	<span class="like">Like</span>
 					              	</a>
 
-									<a href="#" class="facebook-button" id="<%= news.id%>" data-url="" object-id="<%= news.id%>" user-id="<%= user.id%>" text='<%= news.from.name%>'>
+									<a href="#" class="facebook-button" id="<%= news.id%>" data-url="" object-id="<%= news.id%>" user-id="<%= user.id%>" text='<%= news.from.name%> <% if (news.message){%> <%= news.message%> <%}%>'>
 						                <span class="dislike">Disike & hide</span>
 						              </a>
 								</span>
