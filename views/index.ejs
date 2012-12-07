@@ -59,7 +59,7 @@
 $(document).ready(function() {
 	$('.maybespam').click(function(e){
 				e.preventDefault();
-			console.log("maybespam is CLICKD", $(e.target).parent().parent().parent().find('.notaspam').html())
+			//console.log("maybespam is CLICKD", $(e.target).parent().parent().parent().find('.notaspam').html())
 			$(e.target).parent().parent().siblings('.mainContnents').show('fast');
 			$(e.target).parent().remove();
 			$(e.target).parent().parent().parent().find('.notaspam').html('<a>Not a spam? then like this to U-Dislike </a>')
@@ -82,8 +82,8 @@ $(document).ready(function() {
 	         var object_id = $(this).parent().attr('user-id');
 	         var text = $(this).parent().attr('text');
 	        var user_id = $(this).parent().attr('user-id');
-			$(this).closest('.mainContnents').hide()
-			$(this).closest('.maybespamHolder').show()
+			$(this).closest('.mainContnents').addClass('hide')
+			$(this).closest('.maybespamHolder').removeClass('hide')
 
 	        //        logResponse(object_id);
 	         $.get('classify?clazz=dislike&text='+text+'&uid='+user_id, function(data) {
@@ -233,10 +233,7 @@ $(document).ready(function() {
     <% if (user) { %>
 
    <section id="bg" class="clearfix newsFeedBg">
-	   <div class="fbgreybox" style="width: 680px;">
-           Newsfeed
-       </div>
-
+	   Newsfeed
 			<ul class='uiList uiStream'>
 		 <% req.newsFeed.forEach(function(news) { %>
 
@@ -250,8 +247,8 @@ $(document).ready(function() {
 
 						<div class="mainContnents <% if (news.clazz == 'dislike') { %> hide <% } %>">
 
+							<% if (news.picture) { %><img class="actorPhoto lfloat" src=<%= news.picture %> alt="" width='40px' height='40px'> <% } else { %>   <% } %>
 
-						<img class="actorPhoto lfloat" src=<%= news.picture %> alt="" width='40px' height='40px'></a>
 
 						<div class = 'storyInnerContent'>
 
@@ -278,11 +275,11 @@ $(document).ready(function() {
 										<%= news.from.name %>
 									</div>
 									<div class="messageBody">
-										<script>var t = <%= news.created_time %>;makeReadableDate(t);</script>
+										<%= news.created_time %>
 									<br/>
 									 <% if (news.message) { %> <%= news.message %>  <% } %>
 									<% if (news.story) { %> <%= news.story %>  <% } %>
-									<div><img src=<% if (news.picture) { %> <%= news.picture %>  <% } %> /></div>
+									<div><% if (news.picture) { %><img src= <%= news.picture %> /> <% } %> </div>
 
 									</div>
 								</div>
