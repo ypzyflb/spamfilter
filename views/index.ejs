@@ -49,7 +49,7 @@
             var text = $(this).attr('text');
             var user_id = $(this).attr('user-id');
             logResponse(text);
-            $.post("classify", { "clazz": "like", "text": text, "uid": user_id }, function (data) {
+            $.post("classify", { "clazz": "dislike", "text": text, "uid": user_id }, function (data) {
                 logResponse('cb for post:' + data);
             }, 'json');
         });
