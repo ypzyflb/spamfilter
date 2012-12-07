@@ -146,7 +146,7 @@ function update_classifier_for_user(uid, c_str) {
     pg.connect(process.env.DATABASE_URL, function (err, client) {
         client.query ({
             name: 'update classifiers',
-            text: 'UPDATE classifiers SET classifier_string= $2 where uid= $1)',
+            text: 'UPDATE classifiers SET classifier_string= $2 where uid= $1',
             values: [uid, c_str]
         });
     });
