@@ -67,7 +67,7 @@ $(document).ready(function() {
 
       $(function(){
         $('.like').click(function(e) {
-			console.log("like user-id -- ", $(e.target).parent()[0], $(e.target).parent().parent()[0])
+			console.log("like user-id -- ? ", $(e.target).parent()[0], $(e.target).parent().parent()[0])
 	         var object_id = $(this).parent().attr('user-id');
 	         var text = $(this).parent().attr('text');
 	        var user_id = $(this).parent().attr('user-id');
@@ -79,7 +79,7 @@ $(document).ready(function() {
 	    });
 
 		$('.dislike').click(function(e) {
-		console.log("dislike -- ",$(e.target).parent().parent().parent().parent().parent()[0])
+		console.log("dislike -- ?",$(e.target).parent().parent().parent().parent().parent()[0])
 	         var object_id = $(this).parent().attr('user-id');
 	         var text = $(this).parent().attr('text');
 	        var user_id = $(this).parent().attr('user-id');
