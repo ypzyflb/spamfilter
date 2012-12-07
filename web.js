@@ -110,8 +110,7 @@ function handle_facebook_request(req, res) {
   }
 }
 
-function get_classifier_for_user(uid) {
-    var classifier_str;
+function get_classifier_for_user(uid, cb_if_found, cb_if_not_found) {
     pg.connect(process.env.DATABASE_URL, function (err, client) {
         var query_str = 'SELECT classifier_string FROM classifiers where uid=cast(' + uid + ' as varchar(100))';
         console.log(query_str);
@@ -120,16 +119,20 @@ function get_classifier_for_user(uid) {
 
         query.on('row', function (row) {
             classifier_str = row.classifier_string;
+            if (cb_if_found) {
+                cb_if_found (uid, classifier_str);
+            }
             //console.log(classifier_str);
         });
         query.on('end', function() {
             if (!classifier_str) {
                 console.log("no row received");
+                if(cb_if_not_found) {
+                    cb_if_not_found (uid, classifier_str);
+                }
             }
         });
     });
-
-    return classifier_str;
 }
 
 function insert_classifier_for_user(uid, c_str) {
@@ -141,16 +144,21 @@ function insert_classifier_for_user(uid, c_str) {
         });
     });
 }
+
+function print(uid, c_str) {
+    console.log("printing uid " + uid);
+    console.log("printing c_str "+ c_str);
+}
 function handle_classifier_request(req, res) {
     var clazz = req.query['clazz'] || req.body.clazz;
-    console.log("inside classifier clazz:" + clazz);
+    //console.log("inside classifier clazz:" + clazz);
     var text = req.query['text'] || req.body.text;
-    console.log("inside classifier text:" + text);
+    //console.log("inside classifier text:" + text);
     var uid = req.query['uid'] || req.body.uid;
-    console.log("inside classifier uid:" + uid);
+    //console.log("inside classifier uid:" + uid);
     if (text && clazz && uid) {
-        var classifier_str = get_classifier_for_user(uid);
-        console.log("classifier_str" + classifier_str);
+        var classifier_str = get_classifier_for_user(uid, print, print);
+/*        console.log("classifier_str" + classifier_str);
         var classifier;
         var existing_user = !!classifier_str;
         if (existing_user) {
@@ -165,7 +173,7 @@ function handle_classifier_request(req, res) {
 
         if (!existing_user) {
             insert_classifier_for_user(uid, JSON.stringify(classifier));
-        }
+        }*/
     }
     res.end("text = " + text);
 }
