@@ -57,6 +57,11 @@
         }
       }
 $(document).ready(function() {
+	$('.msgTime').each(function(index) {
+	    console.log(index + ' msgTime: ' + $(this).text());
+	});
+
+
 	$('.maybespam').click(function(e){
 				e.preventDefault();
 			//console.log("maybespam is CLICKD", $(e.target).parent().parent().parent().find('.notaspam').html())
@@ -211,7 +216,7 @@ $(document).ready(function() {
             </li>
             <li>
               <a href="#" class="facebook-button apprequests" id="sendRequest" data-message="Test this awesome app">
-                <span class="apprequests">Send Requests</span>
+                <span class="speech-bubble">Send Requests</span>
               </a>
             </li>
           </ul>
@@ -220,7 +225,10 @@ $(document).ready(function() {
       </div>
 
 	<div id="wontshow">
-		<b>Please feel free to 'like' or 'dislike' the posts shown here. Your facebook newsfeed will not be affected.</b>
+		<div class="fbinfobox" style="width: 500px;">
+            <b>Please feel free to 'like' or 'dislike' the posts shown here. Your facebook newsfeed will not be affected.</b>
+        </div>
+
 	</div>
 
       <% } else { %>
@@ -243,8 +251,8 @@ $(document).ready(function() {
 
    <section id="bg" class="clearfix newsFeedBg">
 	   <br>
-			<div class="fbbluebox" style="width: 680px;">
-		            News Feed
+			<div class="fbgreybox" style="width: 680px;">
+		            Your News Feed to be trained.
 		        </div>
 
 			<ul class='uiList uiStream'>
@@ -287,7 +295,7 @@ $(document).ready(function() {
 									<div class="username">
 										<%= news.from.name %>
 									</div>
-									<div class="messageBody">
+									<div class="msgTime">
 										<%= news.created_time %>
 									<br/>
 									 <% if (news.message) { %> <%= news.message %>  <% } %>
