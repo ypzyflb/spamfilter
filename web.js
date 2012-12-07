@@ -113,10 +113,19 @@ function handle_facebook_request(req, res) {
                           fromUsers.push(news.from.id);
                       });
 
-                      console.log("from users:" +fromUsers);
-                      req.newsFeed = newsFeed;
-							//console.log("newsFeed is------ ", newsFeed)
-                      cb();
+
+                      req.facebook.fql('select pic_square from user where uid in (' + fromUsers + ')', function (result) {
+                          var i = 0;
+                          for (i=0; i<newsFeed.length; ++i) {
+                              newsFeed[i].pic_square = result[i].pic_square;
+                          }
+                          console.log("from users:" +fromUsers);
+                          req.newsFeed = newsFeed;
+                          console.log("newsFeed is------ ", newsFeed);
+                          cb();
+                      });
+
+
                   });
               });
           });
