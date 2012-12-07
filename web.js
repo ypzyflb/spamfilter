@@ -110,7 +110,7 @@ function handle_facebook_request(req, res) {
   }
 }
 
-function get_classifier_for_user(uid, cb_if_found, cb_if_not_found) {
+function get_classifier_for_user(uid, cb) {
     pg.connect(process.env.DATABASE_URL, function (err, client) {
         var query_str = 'SELECT classifier_string FROM classifiers where uid=cast(' + uid + ' as varchar(100))';
         console.log(query_str);
@@ -119,17 +119,14 @@ function get_classifier_for_user(uid, cb_if_found, cb_if_not_found) {
 
         query.on('row', function (row) {
             classifier_str = row.classifier_string;
-            if (cb_if_found) {
-                cb_if_found (uid, classifier_str);
-            }
             //console.log(classifier_str);
         });
         query.on('end', function() {
             if (!classifier_str) {
                 console.log("no row received");
-                if(cb_if_not_found) {
-                    cb_if_not_found (uid, classifier_str);
-                }
+            }
+            if(cb) {
+                cb (uid, classifier_str);
             }
         });
     });
@@ -157,7 +154,7 @@ function handle_classifier_request(req, res) {
     var uid = req.query['uid'] || req.body.uid;
     //console.log("inside classifier uid:" + uid);
     if (text && clazz && uid) {
-        var classifier_str = get_classifier_for_user(uid, print, print);
+        get_classifier_for_user(uid, print);
 /*        console.log("classifier_str" + classifier_str);
         var classifier;
         var existing_user = !!classifier_str;
