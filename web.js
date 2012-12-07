@@ -126,7 +126,7 @@ function get_classifier_for_user(uid, cb) {
                 console.log("no row received");
             }
             if(cb) {
-                cb (uid, classifier_str);
+                cb (classifier_str);
             }
         });
     });
@@ -154,23 +154,24 @@ function handle_classifier_request(req, res) {
     var uid = req.query['uid'] || req.body.uid;
     //console.log("inside classifier uid:" + uid);
     if (text && clazz && uid) {
-        get_classifier_for_user(uid, print);
-/*        console.log("classifier_str" + classifier_str);
-        var classifier;
-        var existing_user = !!classifier_str;
-        if (existing_user) {
-            classifier = natural.BayesClassifier.restore(JSON.parse(classifier_str));
-        }
-        else {
-            classifier = new natural.BayesClassifier();
-        }
-        classifier.addDocument(text, clazz);
-        classifier.train();
-        //console.log(JSON.stringify(classifier));
+        get_classifier_for_user(uid, function (classifier_str) {
+            console.log("classifier_str" + classifier_str);
+            /*var classifier;
+            var existing_user = !!classifier_str;
+            if (existing_user) {
+                classifier = natural.BayesClassifier.restore(JSON.parse(classifier_str));
+            }
+            else {
+                classifier = new natural.BayesClassifier();
+            }
+            classifier.addDocument(text, clazz);
+            classifier.train();
+            //console.log(JSON.stringify(classifier));
 
-        if (!existing_user) {
-            insert_classifier_for_user(uid, JSON.stringify(classifier));
-        }*/
+            if (!existing_user) {
+                insert_classifier_for_user(uid, JSON.stringify(classifier));
+            }*/
+        });
     }
     res.end("text = " + text);
 }
