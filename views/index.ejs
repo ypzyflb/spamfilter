@@ -72,9 +72,9 @@ $(document).ready(function() {
 	         var text = $(this).parent().attr('text');
 	        var user_id = $(this).parent().attr('user-id');
 	        //        logResponse(object_id);
-	         $.get('classify?clazz=like&text='+text+'&uid='+user_id, function(data) {
-	                   console.log('The response was', data);
-	                 });
+            $.post("classify", { "clazz": "like", "text": text, "uid": user_id }, function (data) {
+                logResponse('cb for post:' + data);
+            }, 'json');
 	    });
 
 		$('.dislike').click(function() {
@@ -86,9 +86,9 @@ $(document).ready(function() {
 			$(this).parent().parent().parent().closest('.maybespamHolder').removeClass('hide')
 
 	        //        logResponse(object_id);
-	         $.get('classify?clazz=dislike&text='+text+'&uid='+user_id, function(data) {
-	                   console.log('The response was', data);
-	                 });
+            $.post("classify", { "clazz": "dislike", "text": text, "uid": user_id }, function (data) {
+                logResponse('cb for post:' + data);
+            }, 'json');
 	    });
         // Set up so we handle click on the buttons
         $('#postToWall').click(function() {
