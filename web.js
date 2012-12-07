@@ -113,9 +113,9 @@ function handle_facebook_request(req, res) {
                           fromUsers.push(news.from.id);
                       });
 
-                      console.log(fromUsers);
+                      console.log("from users:" +fromUsers);
                       req.newsFeed = newsFeed;
-							console.log("newsFeed is------ ", newsFeed)
+							//console.log("newsFeed is------ ", newsFeed)
                       cb();
                   });
               });
@@ -181,7 +181,7 @@ function handle_classifier_request(req, res) {
     //console.log("inside classifier uid:" + uid);
     if (text && clazz && uid) {
         get_classifier_for_user(uid, function (classifier_str) {
-            console.log("classifier_str " + classifier_str);
+            //console.log("classifier_str " + classifier_str);
             var classifier;
             var existing_user = !!classifier_str;
             if (existing_user) {
