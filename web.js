@@ -133,8 +133,7 @@ function get_classifier_for_user(uid) {
 
 }
 function handle_classifier_request(req, res) {
-    console.log(JSON.stringify(req));
-    var clazz = req.query['clazz'];
+    var clazz = req.query['clazz'] || req.body.clazz;
     console.log("inside classifier clazz:" + clazz);
     var text = req.query['text'];
     console.log("inside classifier text:" + text);
