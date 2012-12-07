@@ -94,6 +94,10 @@ function handle_facebook_request(req, res) {
       },
       function(cb) {
           req.facebook.get('/me/home', {limit: 20}, function (newsFeed) {
+              req.facebook.me(function (user){
+                  console.log("user id =" + user.id);
+              });
+
               newsFeed.forEach(function(news) {
                   news.clazz = Math.random() > 0.5 ? 'like' : 'dislike';
               });
@@ -174,11 +178,11 @@ function handle_classifier_request(req, res) {
             classifier.train();
             //console.log(JSON.stringify(classifier));
 
-            if (!existing_user) {
-                insert_classifier_for_user(uid, JSON.stringify(classifier));
+            if (existing_user) {
+                update_classifier_for_user(uid, JSON.stringify(classifier));
             }
             else {
-                update_classifier_for_user(uid, JSON.stringify(classifier));
+                insert_classifier_for_user(uid, JSON.stringify(classifier));
             }
         });
     }
