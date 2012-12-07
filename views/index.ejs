@@ -51,7 +51,7 @@
             logResponse(text);
             $.post("classify", { "clazz": "like", "text": text, "uid": user_id }, function (data) {
                 logResponse('cb for post:' + data);
-            });
+            }, 'json');
         });
         // Set up so we handle click on the buttons
         $('#postToWall').click(function() {
