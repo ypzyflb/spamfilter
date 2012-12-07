@@ -139,12 +139,19 @@ function handle_classifier_request(req, res) {
     console.log("inside classifier text:" + text);
     var uid = req.query['uid'] || req.body.uid;
     console.log("inside classifier uid:" + uid);
-    if (text && clazz) {
-        var classifier = new natural.BayesClassifier();
+    if (text && clazz && uid) {
+        var classifier_str = get_classifier_for_user(uid);
+        var classifier;
+        if (classifier_str) {
+            classifier = natural.BayesClassifier.restore(JSON.parse(classifier_str));
+        }
+        else {
+            classifier = new natural.BayesClassifier();
+        }
         classifier.addDocument(text, clazz);
         classifier.train();
-        console.log(classifier.classify("text"));
-        get_classifier_for_user(uid);
+        console.log(JSON.stringify(classifier));
+
     }
     res.end("text = " + text);
 }
