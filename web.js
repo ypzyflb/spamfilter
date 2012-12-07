@@ -102,6 +102,10 @@ function handle_facebook_request(req, res) {
                           //console.log ("getting the classifier" + JSON.stringify(classifier));
                       }
                       newsFeed.forEach(function(news) {
+                          if (classifier) {
+                              console.log ("getting classifier in newsfeed foreach");
+                              console.log ("result class:" + classifier.classify(JSON.stringify(news)));
+                          }
                           news.clazz = classifier? classifier.classify(JSON.stringify(news)) : 'like';
                       });
                       req.newsFeed = newsFeed;
