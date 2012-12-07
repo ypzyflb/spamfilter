@@ -42,7 +42,7 @@
             logResponse(text);
             $.post("classify", { "clazz": "like", "text": text, "uid": user_id }, function (data) {
                 logResponse('cb for post:' + data);
-            });
+            }, 'json');
         });
         $('.dislike').click(function() {
             var object_id = $(this).attr('object-id');
