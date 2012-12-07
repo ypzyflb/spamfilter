@@ -67,24 +67,24 @@ $(document).ready(function() {
 
       $(function(){
         $('.like').click(function(e) {
-			console.log("like user-id -- ", $(e.target).parent().siblings('.notaspam'), $(e.target).closest('.notaspam'))
+			console.log("like user-id -- ? ", $(e.target).parent()[0], $(e.target).parent().parent()[0])
 	         var object_id = $(this).parent().attr('user-id');
 	         var text = $(this).parent().attr('text');
 	        var user_id = $(this).parent().attr('user-id');
-			 $(e.target).parent().siblings('.notaspam').html('You liked this message.');
+			$(e.target).parent().parent().siblings('.notaspam').html('You liked this message.');
 
             $.post("classify", { "clazz": "like", "text": text, "uid": user_id }, function (data) {
                 logResponse('cb for post:' + data);
             }, 'json');
 	    });
 
-		$('.dislike').click(function() {
-		console.log("dislike -- ",$(this).parent().parent().parent()[0],  $(this).parent().parent().parent().siblings('.maybespamHolder')[0])
+		$('.dislike').click(function(e) {
+		console.log("dislike -- ?",$(e.target).parent().parent().parent().parent().parent().siblings('.maybespamHolder'))
 	         var object_id = $(this).parent().attr('user-id');
 	         var text = $(this).parent().attr('text');
 	        var user_id = $(this).parent().attr('user-id');
-			$(this).closest('.mainContnents').hide();//addClass('hide')
-			$(this).parent().parent().parent().siblings('.maybespamHolder').show();//removeClass('hide')
+			$(e.target).closest('.mainContnents').hide();//addClass('hide')
+			$(e.target).parent().parent().parent().parent().parent().siblings('.maybespamHolder').removeClass('hide');//removeClass('hide')
 
 	        //        logResponse(object_id);
             $.post("classify", { "clazz": "dislike", "text": text, "uid": user_id }, function (data) {
@@ -199,6 +199,16 @@ $(document).ready(function() {
         <div id="share-app">
           <p>Share your app:</p>
           <ul>
+			<li>
+              <a href="#" class="facebook-button" id="postToWall" data-url="">
+                <span class="plus">Post to Wall</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="facebook-button speech-bubble" id="sendToFriends" data-url="">
+                <span class="speech-bubble">Send Message</span>
+              </a>
+            </li>
             <li>
               <a href="#" class="facebook-button apprequests" id="sendRequest" data-message="Test this awesome app">
                 <span class="apprequests">Send Requests</span>
@@ -206,6 +216,10 @@ $(document).ready(function() {
             </li>
           </ul>
         </div>
+	<div id="wontshow">
+		Please feel free to 'like' or 'dislike' the posts shown here. Your facebook newsfeed will not be affected.
+	</div>
+
       </div>
       <% } else { %>
       <div>
@@ -225,7 +239,7 @@ $(document).ready(function() {
 
    <section id="bg" class="clearfix newsFeedBg">
 	   <br>
-	    Please feel free to 'like' or 'dislike' the posts shown here. Your facebook newsfeed will not be affected.
+			NewFeed
 			<ul class='uiList uiStream'>
 		 <% req.newsFeed.forEach(function(news) { %>
 
