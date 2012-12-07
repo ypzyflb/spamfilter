@@ -133,6 +133,16 @@ header .tagline {
   background-position: 6px -37px;
 }
 
+.facebook-button .like {
+   background: url("../images/thumb.jpeg") no-repeat;
+	background-position-x: 2px;
+}
+
+.facebook-button .dislike {
+   	background: url("../images/thumbdn.jpeg") no-repeat;
+	background-position-x: 2px;
+}
+
 .button:link, .button:visited {
   background-color: #7a90c0;
   background-image: -moz-linear-gradient(top, #97afe2, #6073a1);

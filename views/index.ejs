@@ -193,28 +193,64 @@
 
     <% if (user) { %>
 
-    <section id="samples" class="clearfix">
-      <div>
-        <h3>NewsFeed</h3>
-          <% req.newsFeed.forEach(function(news) { %>
-          <div>
-            <!-- <%= JSON.stringify(news) %> -->
-            <h4><%= news.from.name %></h4>
-            <div><%= news.message %></div>
-            <div>classified as <%= news.clazz %></div>
-          </div>
-          <!--<span><%= news.message %></span>-->
-          <div>
-              <span class="facebook-button like" id=<%= news.id%> user-id=<%= user.id%> object-id=<%= news.id%> text='<%= JSON.stringify(news)%>'>
-                Like
-              </span>
-              <span class="facebook-button dislike" id=<%= news.id%> user-id=<%= user.id%> object-id=<%= news.id%> text='<%= JSON.stringify(news)%>'>
-                Dislike
-              </span>
-          </div>
-          <% }); %>
-      </div>
+   <section id="bg" class="clearfix newsFeedBg">
 
+        <h3>NewsFeed</h3>
+
+
+			<ul class='uiList uiStream'>
+		 <% req.newsFeed.forEach(function(news) { %>
+
+				<li class = 'uiStreamStory selectedStorySimple'>
+					<div class="clearfix storyContent fbgreybox" >
+
+
+						<div class="maybespamHolder">
+							<span class="maybespam"><a class="maybespamlink">You may not be interested this post. click to open.</a></span>
+						</div>
+						<div class="mainContnents hide">
+
+
+						<a class="actorPhoto lfloat" href="https://www.facebook.com/younggyun.koh"><img class="profilePic" src="https://fbcdn-photos-a.akamaihd.net/hphotos-ak-snc6/165398_1493107333843_8348989_s.jpg" alt="" width='40px' height='40px'></a>
+
+						<div class = 'storyInnerContent'>
+
+							<div class="likedislike">
+								<span class="notaspam"> classified as <%= news.clazz %></span>
+								<span>
+
+
+									<a href="#" class="facebook-button" id="<%= news.id%>" data-url="" object-id="<%= news.id%>" user-id="<%= user.id%>" text='<%= JSON.stringify(news)%>'>
+					                	<span class="like">Like</span>
+					              	</a>
+
+									<a href="#" class="facebook-button" id="<%= news.id%>" data-url="" object-id="<%= news.id%>" user-id="<%= user.id%>" text='<%= JSON.stringify(news)%>'>
+						                <span class="dislike">Disike & hide</span>
+						              </a>
+								</span>
+							</div>
+
+								<dl style="" class="dropdown">
+							       <dt><a id="linkglobal" style="cursor:pointer;"></a></dt>
+
+							    </dl>
+								<div class='mainWrapper'>
+									<div class="username">
+										<%= news.from.name %>
+									</div>
+									<div class="messageBody">
+									2012-12-06T23:42:41+0000<br/>
+									<%= news.message %>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</li>
+
+				 <% }); %>
+			</ul>
 
     </section>
 

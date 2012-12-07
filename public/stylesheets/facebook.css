@@ -1,0 +1,421 @@
+/* Default Facebook CSS */
+.fbbody
+{
+    font-family: "lucida grande" ,tahoma,verdana,arial,sans-serif;
+    font-size: 11px;
+    color: #333333;
+}
+/* Default Anchor Style */
+.fbbody a
+{
+    color: #3b5998;
+    outline-style: none;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: bold;
+}
+.fbbody a:hover
+{
+    text-decoration: underline;
+}
+.actorPhoto {
+	margin-bottom: 16px;
+	margin-top: 18px;
+}
+
+.lfloat{
+	float: left;
+}
+.uiStreamStory .storyContent .storyInnerContent {
+	margin-left: 50px;
+}
+
+li.selectedStorySimple, div.selectedStorySimple {
+	position: relative;
+}
+
+.messageBody {
+color: #333;
+font-size: 13px;
+line-height: 1.38;
+font-weight: normal;
+width: 600px;
+}
+
+.uiStreamRedesign .uiStreamStory .mainWrapper {
+margin-bottom: 16px;
+/*padding-top: 18px;*/
+}
+
+.uiStreamStory .mainWrapper {
+margin: 0 35px 14px 0;
+margin-top: -10px;
+}
+
+div {
+display: block;
+}
+
+.clearfix::after {
+	clear: both;
+	content: ".";
+	display: block;
+	font-size: 0;
+	height: 0;
+	line-height: 0;
+	visibility: hidden;
+}
+.storyContent {
+	padding-bottom: 2px;
+	position: relative;
+}
+.username{
+	cursor: pointer;
+	color: #3B5998;
+	text-decoration: none;
+}
+/* Facebook Box Styles */
+.fbgreybox
+{
+    background-color: white;
+    border: 1px solid #cccccc;
+    color: #333333;
+    padding-left: 10px;
+	padding-right: 5px;
+	padding-top: 3px;
+    font-size: 13px;
+    font-weight: bold;
+
+	margin : 10px;
+	width:680px;
+}
+.fbbluebox
+{
+    background-color: #eceff6;
+    border: 1px solid #d4dae8;
+    color: #333333;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: bold;
+}
+.fbinfobox
+{
+    background-color: #fff9d7;
+    border: 1px solid #e2c822;
+    color: #333333;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: bold;
+}
+.fberrorbox
+{
+    background-color: #ffebe8;
+    border: 1px solid #dd3c10;
+    color: #333333;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: bold;
+}
+/* Content Divider on White Background */
+.fbcontentdivider
+{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 520px;
+    height: 1px;
+    background-color: #d8dfea;
+}
+/* Facebook Tab Style */
+.fbtab
+{
+    padding: 8px;
+    background-color: #d8dfea;
+    color: #3b5998;
+    font-weight: bold;
+    float: left;
+    margin-right: 4px;
+    text-decoration: none;
+}
+.fbtab:hover
+{
+    background-color: #3b5998;
+    color: #ffffff;
+    cursor: hand;
+}
+
+/* ------------------------------------------
+CSS3 FACEBOOK-STYLE BUTTONS (Nicolas Gallagher)
+Licensed under Unlicense
+http://github.com/necolas/css3-facebook-buttons
+------------------------------------------ */
+
+
+/* ------------------------------------------------------------------------------------------------------------- BUTTON */
+
+.uibutton {
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+    display: inline-block;
+    padding: 0.3em 0.6em 0.375em;
+    border: 1px solid #999;
+    border-bottom-color: #888;
+    margin: 0;
+    text-decoration: none;
+    text-align: center;
+    font: bold 11px/normal 'lucida grande', tahoma, verdana, arial, sans-serif;
+    white-space: nowrap;
+    cursor: pointer;
+    /* outline: none; */
+    color: #333;
+    background-color: #eee;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f6f6), to(#e4e4e3));
+    background-image: -moz-linear-gradient(#f5f6f6, #e4e4e3);
+    background-image: -o-linear-gradient(#f5f6f6, #e4e4e3);
+    background-image: linear-gradient(#f5f6f6, #e4e4e3);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f5f6f6', EndColorStr='#e4e4e3'); /* for IE 6 - 9 */
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #fff;
+    -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #fff;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #fff;
+    /* IE hacks */
+    zoom: 1;
+    *display: inline;
+}
+
+.uibutton:hover,
+.uibutton:focus,
+.uibutton:active {
+    border-color: #777 #777 #666;
+}
+
+.uibutton:active {
+    border-color: #aaa;
+    background: #ddd;
+    filter: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+/* overrides extra padding on button elements in Firefox */
+.uibutton::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+/* ............................................................................................................. Icons */
+
+.uibutton.icon:before {
+    content: "";
+    position: relative;
+    top: 1px;
+    float:left;
+    width: 10px;
+    height: 12px;
+    margin: 0 0.5em 0 0;
+    background: url(fb-icons.png) 99px 99px no-repeat;
+}
+
+.uibutton.edit:before  { background-position: 0 0; }
+.uibutton.add:before  { background-position: -10px 0; }
+.uibutton.secure:before  { background-position: -20px 0; }
+.uibutton.prev:before  { background-position: -30px 0; }
+.uibutton.next:before  { float:right; margin: 0 -0.25em 0 0.5em; background-position: -40px 0; }
+
+/* ------------------------------------------------------------------------------------------------------------- BUTTON EXTENSIONS */
+
+/* ............................................................................................................. Large */
+
+.uibutton.large {
+    font-size: 13px;
+}
+
+/* ............................................................................................................. Submit, etc */
+
+.uibutton.confirm {
+    border-color: #29447e #29447e #1a356e;
+    color: #fff;
+    background-color: #5B74A8;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#637bad), to(#5872a7));
+    background-image: -moz-linear-gradient(#637bad, #5872a7);
+    background-image: -o-linear-gradient(#637bad, #5872a7);
+    background-image: linear-gradient(#637bad, #5872a7);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#637bad', EndColorStr='#5872a7'); /* for IE 6 - 9 */
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #8a9cc2;
+    -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #8a9cc2;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #8a9cc2;
+}
+
+.uibutton.confirm:active {
+    border-color: #29447E;
+    background: #4F6AA3;
+    filter: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+/* ............................................................................................................. Special */
+
+.uibutton.special {
+    border-color: #3b6e22 #3b6e22 #2c5115;
+    color: #fff;
+    background-color: #69a74e;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#75ae5c), to(#67a54b));
+    background-image: -moz-linear-gradient(#75ae5c, #67a54b);
+    background-image: -o-linear-gradient(#75ae5c, #67a54b);
+    background-image: linear-gradient(#75ae5c, #67a54b);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#75ae5c', EndColorStr='#67a54b'); /* for IE 6 - 9 */
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #98c286;
+    -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #98c286;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #98c286;
+}
+
+.uibutton.special:active {
+    border-color: #3b6e22;
+    background: #609946;
+    filter: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+/* ............................................................................................................. Disable */
+
+.uibutton.disable {
+    z-index: 0;
+    border-color: #c8c8c8;
+    color: #b8b8b8;
+    background: #f2f2f2;
+    cursor: default;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.uibutton.confirm.disable {
+    color: #fff;
+    border-color: #94a2bf;
+    background: #adbad4;
+}
+
+.uibutton.special.disable {
+    color: #fff;
+    border-color: #9db791;
+    background: #b4d3a7;
+}
+
+.uibutton.disable.icon:before,
+.uibutton.disable.icon:after {
+    opacity: 0.5;
+}
+
+/* ------------------------------------------------------------------------------------------------------------- BUTTON GROUPS */
+
+.uibutton-group {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* IE hacks */
+    zoom: 1;
+    *display: inline;
+}
+
+.uibutton + .uibutton,
+.uibutton + .uibutton-group,
+.uibutton-group + .uibutton,
+.uibutton-group + .uibutton-group {
+    margin-left: 3px;
+}
+
+.uibutton-group li {
+    float: left;
+    padding: 0;
+    margin: 0;
+}
+
+.uibutton-group .uibutton {
+    float: left;
+    margin-left: -1px;
+}
+
+.uibutton-group .uibutton:hover,
+.uibutton-group .uibutton:focus,
+.uibutton-group .uibutton:active {
+    z-index:2;
+}
+
+.uibutton-group > .uibutton:first-child,
+.uibutton-group li:first-child .uibutton {
+    margin-left: 0;
+}
+
+/* ------------------------------------------------------------------------------------------------------------- BUTTON CONTAINER */
+/* For mixing buttons and button groups, e.g., in a navigation bar */
+
+.uibutton-toolbar {
+    padding: 6px;
+    border-top: 1px solid #ccc;
+    background: #f2f2f2;
+}
+
+.uibutton-toolbar .uibutton,
+.uibutton-toolbar .uibutton-group {
+    vertical-align: bottom;
+}
+
+/* Grey Small Dropdown */
+
+/* General dropdown styles */
+.dropdown dl{ margin-left:5px; z-index:10;}
+.dropdown dd, .dropdown dt, .dropdown ul { margin:0px; padding:0px; margin-left: 610px; z-index:10;}
+.dropdown dd { position:relative; }
+
+/* DT styles for sliding doors */
+.dropdown dt a {background:#EEEEEE url(../images/edit.png) no-repeat scroll right center;
+    display:block; width:20px; height:22px; cursor:pointer;background-position-x: 5px;border: 1px solid #D4DAE8;}
+
+.dropdown dt a.selected{
+	background:#3b5998 url(../images/editting.png) no-repeat scroll right center;background-position-x: 5px;
+}
+.dropdown dt a span {cursor:pointer; display:block; padding:5px;}
+
+/* UL styles */
+.dropdown dd ul { background:#FFF none repeat scroll 0 0; display:none;
+    list-style:none; padding:3px 0; position:absolute;
+    left:0px; width:160px; left:auto; right:0; border:1px solid #3b5998; cursor:pointer;}
+.dropdown dd ul li{ background-color:#FFF; margin:0; width:160px;}
+.dropdown span.value { display:none;}
+.dropdown dd ul li a { display:block; font-weight:normal; width:137px; text-align:left; overflow:hidden; padding:2px 4px 3px 19px; color:#333; text-decoration:none;}
+.dropdown dd ul li a:hover{ background:#3b5998; color:white; text-decoration:none; }
+.dropdown dd ul li a:visited{ text-decoration:none; }
+
+
+.maybespam
+{
+	padding: 5px;
+	color: #B4B4B4;
+	padding-left: 50px;
+}
+.maybespam a{
+	cursor: pointer;
+}
+.notspam
+{
+	float: right;
+	padding-right: 40px;
+}
+
+.newsFeedBg{
+	background-color:#eceff6;
+}
+
+.hide {
+	display : none;
+}
+.likedislike{
+	float: right;
+	padding-right: 40px;
+	padding-top: 5px;
+}
