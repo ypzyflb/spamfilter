@@ -95,7 +95,14 @@ function handle_facebook_request(req, res) {
       function(cb) {
           req.facebook.get('/me/home', {limit: 20}, function (newsFeed) {
               req.facebook.me(function (user){
-                  console.log("user id =" + user.id);
+                  get_classifier_for_user(user.id, function (c_str) {
+                      var classifier;
+                      if (c_str) {
+                          classifier = natural.BayesClassifier.restore(JSON.parse(c_str));
+                          console.log ("getting the classifier" + JSON.stringify(classifier));
+                      }
+
+                  });
               });
 
               newsFeed.forEach(function(news) {
