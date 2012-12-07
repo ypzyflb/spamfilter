@@ -64,7 +64,7 @@ function handle_facebook_request(req, res) {
   if (req.facebook.token) {
 
     async.parallel([
-      function(cb) {
+/*      function(cb) {
         // query 4 friends and send them to the socket for this socket id
         req.facebook.get('/me/friends', { limit: 4 }, function(friends) {
           req.friends = friends;
@@ -91,7 +91,7 @@ function handle_facebook_request(req, res) {
           req.friends_using_app = result;
           cb();
         });
-      },
+      },*/
       function(cb) {
           req.facebook.get('/me/home', {limit: 20}, function (newsFeed) {
               req.facebook.me(function (user){
