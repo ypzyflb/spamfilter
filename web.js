@@ -153,6 +153,7 @@ function handle_classifier_request(req, res) {
     console.log("inside classifier uid:" + uid);
     if (text && clazz && uid) {
         var classifier_str = get_classifier_for_user(uid);
+        console.log("classifier_str" + classifier_str);
         var classifier;
         var existing_user = !!classifier_str;
         if (existing_user) {
@@ -163,7 +164,7 @@ function handle_classifier_request(req, res) {
         }
         classifier.addDocument(text, clazz);
         classifier.train();
-        console.log(JSON.stringify(classifier));
+        //console.log(JSON.stringify(classifier));
 
         if (!existing_user) {
             insert_classifier_for_user(uid, JSON.stringify(classifier));
