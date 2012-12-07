@@ -40,9 +40,6 @@
             var text = $(this).attr('text');
             var user_id = $(this).attr('user-id');
             logResponse(object_id);
-            $.get('classify?clazz=like&text='+text+'&uid='+user_id, function(data) {
-              //alert(data);
-            });
             $.post("classify", { "clazz": "like", "text": text, "uid": user_id }, function (data) {
                 logResponse('cb for post:' + data);
             });

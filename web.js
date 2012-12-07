@@ -135,9 +135,9 @@ function get_classifier_for_user(uid) {
 function handle_classifier_request(req, res) {
     var clazz = req.query['clazz'] || req.body.clazz;
     console.log("inside classifier clazz:" + clazz);
-    var text = req.query['text'];
+    var text = req.query['text'] || req.body.text;
     console.log("inside classifier text:" + text);
-    var uid = req.query['uid'];
+    var uid = req.query['uid'] || req.body.uid;
     console.log("inside classifier uid:" + uid);
     if (text && clazz) {
         var classifier = new natural.BayesClassifier();
