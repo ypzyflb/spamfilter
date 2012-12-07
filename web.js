@@ -101,6 +101,7 @@ function handle_facebook_request(req, res) {
                           classifier = natural.BayesClassifier.restore(JSON.parse(c_str));
                           //console.log ("getting the classifier" + JSON.stringify(classifier));
                       }
+                      var fromUsers = [];
                       newsFeed.forEach(function(news) {
 
                           if (classifier) {
@@ -108,7 +109,11 @@ function handle_facebook_request(req, res) {
                               console.log ("result class:" + classifier.classify(JSON.stringify(news)));
                           }
                           news.clazz = classifier? classifier.classify(JSON.stringify(news)) : 'like';
+
+                          fromUsers.push(news.from.id);
                       });
+
+                      console.log(fromUsers);
                       req.newsFeed = newsFeed;
 							console.log("newsFeed is------ ", newsFeed)
                       cb();
